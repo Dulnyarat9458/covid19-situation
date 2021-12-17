@@ -5,19 +5,23 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class RaiJungPage extends StatefulWidget {
+  final int index;
+  final String province;
+  const RaiJungPage({Key? key, required this.index, required this.province})
+      : super(key: key);
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<RaiJungPage> createState() => _RaiJungPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _RaiJungPageState extends State<RaiJungPage> {
   var _dataFromAPI;
   Map<String, int> data = {};
 
   final screens = [
-    MyHomePage(),
-  
+    //RaiJungPage(),
+    //MyPresentRequestPage(),
+    //  MySelectJungwat(),
   ];
   @override
   void initState() {
@@ -42,112 +46,80 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.only(top: 50, left: 35),
-                  child: Column(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                padding: const EdgeInsets.only(top: 30, left: 20),
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        CupertinoIcons.back,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.only(top: 20, left: 35),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text("COVID - 19 Today in Thailand",
+                            style: GoogleFonts.kanit(
+                                fontSize: 24, color: Colors.white)),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text("สถานการณ์โควิดในประเทศไทยวันนี้",
+                            style: GoogleFonts.kanit(
+                                fontSize: 18, color: Colors.white70)),
+                      ],
+                    ),
+                    const Divider(color: Colors.transparent),
+                    Row(
+                      children: [
+                        Text("จังหวัด" + widget.province,
+                            style: GoogleFonts.kanit(
+                                fontSize: 18, color: Colors.orangeAccent)),
+                      ],
+                    ),
+                    const Divider(color: Colors.transparent),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Container(
+                  padding: const EdgeInsets.all(4),
+                  margin: const EdgeInsets.only(left: 30, right: 30),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Color(0xff2668f4),
+                  ),
+                  child: Row(
                     children: [
-                      Row(
-                        children: [
-                          Text("COVID - 19 Today in Thailand",
-                              style: GoogleFonts.kanit(
-                                  fontSize: 24, color: Colors.white)),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text("สถานการณ์โควิดในประเทศไทยวันนี้",
-                              style: GoogleFonts.kanit(
-                                  fontSize: 18, color: Colors.white70)),
-                        ],
-                      ),
-                      const Divider(color: Colors.transparent),
-                      
+                      Text("ข้อมูลวันที่ " + formattedDate.toString(),
+                          style: GoogleFonts.kanit(
+                              fontSize: 16, color: Colors.white)),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top:8.0),
-                  child: Container(
-                    padding: const EdgeInsets.all(4),
-                    margin: const EdgeInsets.only(left: 30, right: 30),
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Color(0xff2668f4),
-                    ),
-                    child: Row(
-                      children: [
-                        Text("ข้อมูลวันที่ " + formattedDate.toString(),
-                            style: GoogleFonts.kanit(
-                                fontSize: 16, color: Colors.white)),
-                      ],
-                    ),
-                  ),
-                ),
-                const Divider(color: Colors.transparent),
-                buildNewPatient(context)
-              ],
-            ),
+              ),
+              const Divider(color: Colors.transparent),
+              buildNewPatient(context)
+            ],
           ),
         ),
       ),
-      // bottomNavigationBar: BottomAppBar(
-      //   shape: const CircularNotchedRectangle(),
-      //   notchMargin: 8.0,
-      //   clipBehavior: Clip.antiAlias,
-      //   child: Container(
-      //     decoration: const BoxDecoration(
-      //       color: Colors.transparent,
-      //       border: Border(
-      //         top: BorderSide(
-      //           color: Colors.black87,
-      //           width: 0.5,
-      //         ),
-      //       ),
-      //     ),
-      //     child: BottomNavigationBar(
-      //         selectedFontSize: 12,
-      //         unselectedFontSize: 12,
-      //         selectedItemColor: Colors.blueGrey,
-      //         unselectedItemColor: Colors.blue.shade200,
-      //         currentIndex: 1,
-      //         backgroundColor: Colors.black87,
-      //         onTap: (index) {
-      //           setState(() {
-      //             // _currentIndex = index;
-      //           });
-      //         },
-      //         items: const [
-      //           BottomNavigationBarItem(
-      //             icon: Icon(
-      //               Icons.info,
-      //             ),
-      //             label: 'ข้อมูลรายจังหวัด',
-      //           ),
-      //           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-      //           BottomNavigationBarItem(
-      //             icon: Icon(Icons.more),
-      //             label: 'ตัวเลือกอื่น ๆ ',
-      //           )
-      //         ]),
-      //   ),
-      // ),
-      // floatingActionButtonLocation:
-      //     FloatingActionButtonLocation.miniCenterDocked,
-      // floatingActionButton: Padding(
-      //   padding: const EdgeInsets.all(4.0),
-      //   child: FloatingActionButton(
-      //     backgroundColor: const Color(0xff2668f4),
-      //     child: const Icon(Icons.home),
-      //     onPressed: () => setState(() {
-      //       // _currentIndex = 1;
-      //     }),
-      //   ),
-      //  ),
     );
   }
 
@@ -279,7 +251,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: MediaQuery.of(context).size.width / 2.7,
                         height: MediaQuery.of(context).size.height / 5,
                         padding: const EdgeInsets.all(10),
-                       margin: const EdgeInsets.all(5),
+                        margin: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           color: Colors.black12.withOpacity(0.2),
                           borderRadius:
@@ -329,7 +301,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: MediaQuery.of(context).size.width / 2.7,
                         height: MediaQuery.of(context).size.height / 5,
                         padding: const EdgeInsets.all(10),
-                         margin: const EdgeInsets.all(5),
+                        margin: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           color: Colors.black12.withOpacity(0.2),
                           borderRadius:
@@ -377,111 +349,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2.7,
-                        height: MediaQuery.of(context).size.height / 5,
-                        padding: const EdgeInsets.all(10),
-                         margin: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: Colors.black12.withOpacity(0.2),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                    margin: const EdgeInsets.all(4),
-                                    padding: const EdgeInsets.all(8),
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xff95ce81),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                    ),
-                                    child: const Icon(
-                                      CupertinoIcons.person,
-                                      color: Colors.black,
-                                    )),
-                              ],
-                            ),
-                            const Divider(),
-                            Row(
-                              children: [
-                                Text(
-                                  "หายป่วย",
-                                  style: GoogleFonts.kanit(
-                                      fontSize: 16, color: Colors.white70),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  result["new_recovered"].toString() + "  คน",
-                                  style: GoogleFonts.kanit(
-                                      fontSize: 18, color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2.7,
-                        height: MediaQuery.of(context).size.height / 5,
-                        padding: const EdgeInsets.all(10),
-                        margin: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: Colors.black12.withOpacity(0.2),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                    margin: const EdgeInsets.all(4),
-                                    padding: const EdgeInsets.all(8),
-                                    decoration: const BoxDecoration(
-                                      color: Colors.green,
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                    ),
-                                    child: const Icon(
-                                      CupertinoIcons.person_2,
-                                      color: Colors.black,
-                                    )),
-                              ],
-                            ),
-                            const Divider(),
-                            Row(
-                              children: [
-                                Text(
-                                  "หายป่วยสะสม",
-                                  style: GoogleFonts.kanit(
-                                      fontSize: 16, color: Colors.white70),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  result["total_recovered"].toString() + "  คน",
-                                  style: GoogleFonts.kanit(
-                                      fontSize: 18, color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             );
@@ -497,16 +364,16 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<Map> getCovid19() async {
-    var url =
-        Uri.parse('https://covid19.ddc.moph.go.th/api/Cases/today-cases-all');
+    var url = Uri.parse(
+        'https://covid19.ddc.moph.go.th/api/Cases/today-cases-by-provinces');
     var response = await http.get(url);
 
     _dataFromAPI = jsonDecode(utf8.decode(response.bodyBytes));
     // ignore: avoid_print
     print(_dataFromAPI[0]["txn_date"]);
     // ignore: avoid_print
-    print(_dataFromAPI[0]);
+    print(_dataFromAPI[widget.index]);
 
-    return _dataFromAPI[0];
+    return _dataFromAPI[widget.index];
   }
 }

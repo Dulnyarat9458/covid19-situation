@@ -1,4 +1,5 @@
 import 'package:covid19viewer/home.dart';
+import 'package:covid19viewer/mainscreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:   MyHomePage(),
+      home:   MyMainScreenPage(),
     );
   }
 }
