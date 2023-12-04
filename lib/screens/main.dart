@@ -1,6 +1,6 @@
-import 'package:covid19viewer/home.dart';
-import 'package:covid19viewer/mainscreen.dart';
 import 'package:flutter/material.dart';
+
+import 'package:covid19viewer/screens/template.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:   MyMainScreenPage(),
+      home: const MyTemplate(),
     );
   }
 }

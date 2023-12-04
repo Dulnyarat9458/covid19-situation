@@ -1,28 +1,25 @@
 import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
-class RaiJungPage extends StatefulWidget {
+class ProvinceDetailPage extends StatefulWidget {
   final int index;
   final String province;
-  const RaiJungPage({Key? key, required this.index, required this.province})
+  const ProvinceDetailPage(
+      {Key? key, required this.index, required this.province})
       : super(key: key);
   @override
-  State<RaiJungPage> createState() => _RaiJungPageState();
+  State<ProvinceDetailPage> createState() => _ProvinceDetailPageState();
 }
 
-class _RaiJungPageState extends State<RaiJungPage> {
-  var _dataFromAPI;
+class _ProvinceDetailPageState extends State<ProvinceDetailPage> {
   Map<String, int> data = {};
 
-  final screens = [
-    //RaiJungPage(),
-    //MyPresentRequestPage(),
-    //  MySelectJungwat(),
-  ];
   @override
   void initState() {
     super.initState();
@@ -72,24 +69,30 @@ class _RaiJungPageState extends State<RaiJungPage> {
                   children: [
                     Row(
                       children: [
-                        Text("COVID - 19 Today in Thailand",
-                            style: GoogleFonts.kanit(
-                                fontSize: 24, color: Colors.white)),
+                        Text(
+                          "COVID - 19 Today in Thailand",
+                          style: GoogleFonts.kanit(
+                              fontSize: 24, color: Colors.white),
+                        ),
                       ],
                     ),
                     Row(
                       children: [
-                        Text("สถานการณ์โควิดในประเทศไทยวันนี้",
-                            style: GoogleFonts.kanit(
-                                fontSize: 18, color: Colors.white70)),
+                        Text(
+                          "สถานการณ์โควิดในประเทศไทยวันนี้",
+                          style: GoogleFonts.kanit(
+                              fontSize: 18, color: Colors.white70),
+                        ),
                       ],
                     ),
                     const Divider(color: Colors.transparent),
                     Row(
                       children: [
-                        Text("จังหวัด" + widget.province,
-                            style: GoogleFonts.kanit(
-                                fontSize: 18, color: Colors.orangeAccent)),
+                        Text(
+                          "จังหวัด" + widget.province,
+                          style: GoogleFonts.kanit(
+                              fontSize: 18, color: Colors.orangeAccent),
+                        ),
                       ],
                     ),
                     const Divider(color: Colors.transparent),
@@ -102,14 +105,18 @@ class _RaiJungPageState extends State<RaiJungPage> {
                   padding: const EdgeInsets.all(4),
                   margin: const EdgeInsets.only(left: 30, right: 30),
                   decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
                     color: Color(0xff2668f4),
                   ),
                   child: Row(
                     children: [
-                      Text("ข้อมูลวันที่ " + formattedDate.toString(),
-                          style: GoogleFonts.kanit(
-                              fontSize: 16, color: Colors.white)),
+                      Text(
+                        "ข้อมูลวันที่ " + formattedDate.toString(),
+                        style: GoogleFonts.kanit(
+                            fontSize: 16, color: Colors.white),
+                      ),
                     ],
                   ),
                 ),
@@ -149,8 +156,9 @@ class _RaiJungPageState extends State<RaiJungPage> {
                         margin: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           color: Colors.black12.withOpacity(0.2),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(10),
+                          ),
                         ),
                         child: Column(
                           children: [
@@ -161,8 +169,9 @@ class _RaiJungPageState extends State<RaiJungPage> {
                                     padding: const EdgeInsets.all(8),
                                     decoration: const BoxDecoration(
                                       color: Color(0xfff0c94a),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(10),
+                                      ),
                                     ),
                                     child: const Icon(
                                       CupertinoIcons.person,
@@ -199,8 +208,9 @@ class _RaiJungPageState extends State<RaiJungPage> {
                         margin: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           color: Colors.black12.withOpacity(0.2),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(10),
+                          ),
                         ),
                         child: Column(
                           children: [
@@ -211,8 +221,9 @@ class _RaiJungPageState extends State<RaiJungPage> {
                                     padding: const EdgeInsets.all(8),
                                     decoration: const BoxDecoration(
                                       color: Color(0xfff3ab3f),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(10),
+                                      ),
                                     ),
                                     child: const Icon(
                                       CupertinoIcons.person_2,
@@ -254,8 +265,9 @@ class _RaiJungPageState extends State<RaiJungPage> {
                         margin: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           color: Colors.black12.withOpacity(0.2),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(10),
+                          ),
                         ),
                         child: Column(
                           children: [
@@ -266,8 +278,9 @@ class _RaiJungPageState extends State<RaiJungPage> {
                                     padding: const EdgeInsets.all(8),
                                     decoration: const BoxDecoration(
                                       color: Color(0xfffa9092),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(10),
+                                      ),
                                     ),
                                     child: const Icon(
                                       CupertinoIcons.person,
@@ -304,8 +317,9 @@ class _RaiJungPageState extends State<RaiJungPage> {
                         margin: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           color: Colors.black12.withOpacity(0.2),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(10),
+                          ),
                         ),
                         child: Column(
                           children: [
@@ -353,7 +367,6 @@ class _RaiJungPageState extends State<RaiJungPage> {
               ),
             );
           }
-
           if (!snapshot.hasData) {
             return const CupertinoActivityIndicator();
           }
@@ -367,13 +380,7 @@ class _RaiJungPageState extends State<RaiJungPage> {
     var url = Uri.parse(
         'https://covid19.ddc.moph.go.th/api/Cases/today-cases-by-provinces');
     var response = await http.get(url);
-
-    _dataFromAPI = jsonDecode(utf8.decode(response.bodyBytes));
-    // ignore: avoid_print
-    print(_dataFromAPI[0]["txn_date"]);
-    // ignore: avoid_print
-    print(_dataFromAPI[widget.index]);
-
-    return _dataFromAPI[widget.index];
+    var dataFromAPI = jsonDecode(utf8.decode(response.bodyBytes));
+    return dataFromAPI[widget.index];
   }
 }
